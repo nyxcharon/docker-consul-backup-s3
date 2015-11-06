@@ -1,6 +1,10 @@
 # docker-consul-backup-s3
 Docker container to backup consul and upload it to s3
 
+[![](https://badge.imagelayers.io/nyxcharon/docker-consul-backup-s3:latest.svg)](https://imagelayers.io/?images=nyxcharon/docker-consul-backup-s3:latest 'Get your own badge on imagelayers.io')
+[![Docker Registry](https://img.shields.io/docker/pulls/nyxcharon/docker-consul-backup-s3.svg)](https://registry.hub.docker.com/u/nyxcharon/docker-consul-backup-s3)&nbsp;
+
+
 Info/Usage
 -----
 
