@@ -7,7 +7,8 @@ RUN apk add --update \
     python \
     python-dev \
     py-pip \
-    bash
+    bash \
+    git
 
 RUN pip install --upgrade pip && pip install -r /requirements
 
