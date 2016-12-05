@@ -1,22 +1,20 @@
 #! /bin/bash
 set -e
-FILENAME="vault.backup.$(date +%F_%R)"
-
 
 help () {
   echo "consul-backup"
-  echo "Backups consul to a s3 bucket. You must provde all 3 arguments"
+  echo "Backups consul to a s3 bucket. You must provde all 4 arguments"
   echo
   echo "Usage: consul-backup -h CONSUL_HOST -p CONSUL_PORT -b somebucketname"
   echo
   echo "-h | --host     - The Consul Host"
   echo "-p | --port     - The Consul Port"
   echo "-b | --s3bucket  - The s3 bucket path to use, no trailing slash"
-
+  echo "-f | --filename  - The prefix for the filename."
 }
 
-if [[ $# -ne 6 ]] ; then
-    echo 'ERROR: All 3 arguments must be specified'
+if [[ $# -ne 8 ]] ; then
+    echo 'ERROR: All 4 arguments must be specified'
     help
     exit 1
 fi
@@ -39,17 +37,20 @@ case $key in
     S3_URL="$2"
     shift
     ;;
+    -f|--filename)
+    FILENAME=FILENAME="$2"$(date +%F_%R)
+    shift
+    ;;
     *)
     ;;
 esac
 shift
 done
 
-
-
 echo APIHOST = "{$API_HOST}"
 echo API_PORT = "{$API_PORT}"
 echo S3_URL = "{$S3_URL}"
+echo FILENAME = "{$FILENAME}"
 
 #Dump Keys
 consulate --api-host "$API_HOST" --api-port "$API_PORT" kv backup -b -f "$FILENAME"
