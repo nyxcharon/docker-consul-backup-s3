@@ -38,7 +38,7 @@ case $key in
     shift
     ;;
     -f|--filename)
-    FILENAME=FILENAME="$2"$(date +%F_%R)
+    FILENAME="$2"$(date +%F_%R)
     shift
     ;;
     *)
